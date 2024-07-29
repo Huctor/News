@@ -41,12 +41,3 @@ class NewsApiService(private val client: HttpClient):NewsSource {
         }
     }
 }
-
-val newsModule: Module = module {
-    single { HttpClient() }
-    single<NewsSource> { NewsApiService(get()) }
-    // 如果需要使用不同的新闻源，只需更改这里的实现
-    single<NewsSource> { AnotherNewsApiService(get()) }
-    single { NewsRepository(get()) }
-    viewModel { NewsViewModel(get()) }
-}
