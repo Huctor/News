@@ -1,0 +1,4 @@
+package Service
+
+class NewsSource {
+}
