@@ -10,6 +10,7 @@ import ComposeApp
  */
 class NewsViewModelWrapper: ObservableObject {
     private let viewModel: NewsViewModel // The underlying ViewModel for fetching news
+    private let cacheManager: IosCacheManager
 
     @Published var news: [Article] = [] // Published property for news articles
 
@@ -18,8 +19,9 @@ class NewsViewModelWrapper: ObservableObject {
      * of the use case and the view model, and starts collecting news data.
      */
     init() {
+        cacheManager = IosCacheManager()
         // Create instances of necessary classes for fetching news
-        let getNewsUseCase = GetNewsUseCase(newsRepository: NewsRepository(apiService: NewsApiService(client: Modules_ios_ktKt.createHttpClient())))
+        let getNewsUseCase = GetNewsUseCase(newsRepository: NewsRepository(apiService: NewsApiService(client: Modules_ios_ktKt.createHttpClient()),cacheManager: cacheManager))
         viewModel = NewsViewModel(getNewsUseCase: getNewsUseCase)
         collectNews()
     }

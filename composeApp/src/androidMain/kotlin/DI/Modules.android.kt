@@ -1,5 +1,7 @@
 package DI
 
+import AndroidCacheManager.AndroidCacheManager
+import CacheManager.CacheManager
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -7,6 +9,7 @@ import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import org.koin.dsl.module
 
 /**
  * Creates and configures an HttpClient instance using the OkHttp engine.
@@ -31,4 +34,11 @@ actual fun createHttpClient(): HttpClient {
             )
         }
     }
+}
+
+/**
+ * Android-specific Koin module to provide the AndroidCacheManager implementation.
+ */
+val androidModule = module {
+    single<CacheManager> { AndroidCacheManager(get()) }
 }

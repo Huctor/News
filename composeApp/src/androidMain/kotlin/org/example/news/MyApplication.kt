@@ -1,5 +1,6 @@
 package org.example.news
 
+import DI.androidModule
 import DI.commonModule
 import DI.initKoin
 import android.app.Application
@@ -18,7 +19,7 @@ class MyApplication: Application() {
         super.onCreate()
         initKoin {
             androidContext(this@MyApplication)
-            modules(commonModule())
+            modules(commonModule(), androidModule)
         }
     }
 }

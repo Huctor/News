@@ -1,4 +1,5 @@
 import SwiftUI
+import ComposeApp
 
 /**
  * The main entry point for the iOS application.
@@ -8,6 +9,10 @@ import SwiftUI
  */
 @main
 struct iOSApp: App {
+
+    init(){
+        InitKoinKt.doInitKoin()
+    }
     // The body of the app defines the main scene of the application.
     var body: some Scene {
         // Create a window group to manage the app's windows.

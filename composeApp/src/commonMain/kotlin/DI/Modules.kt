@@ -32,7 +32,7 @@ fun commonModule() = module {
     // Declare a singleton for NewsApiService, injecting HttpClient
     single { NewsApiService(get()) }
     // Declare a singleton for NewsRepository, injecting NewsApiService
-    single { NewsRepository(get()) }
+    single { NewsRepository(get(), get()) }
     // Declare a singleton for GetNewsUseCase, injecting NewsRepository
     single { GetNewsUseCase(get()) }
     // Declare a factory for NewsViewModel, injecting GetNewsUseCase
