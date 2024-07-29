@@ -1,0 +1,4 @@
+package CacheManager
+
+class CacheManager {
+}

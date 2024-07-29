@@ -1,0 +1,4 @@
+package AndroidCacheManager
+
+class AndroidCacheManager {
+}

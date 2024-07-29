@@ -1,0 +1,4 @@
+package IosCacheManager
+
+class IosCacheManager {
+}
