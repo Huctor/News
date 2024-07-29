@@ -2,6 +2,7 @@ package DI
 
 import Repository.NewsRepository
 import Service.NewsApiService
+import Service.NewsSource
 import Usecase.GetNewsUseCase
 import ViewModel.NewsViewModel
 import io.ktor.client.HttpClient
@@ -30,11 +31,12 @@ fun commonModule() = module {
     // Declare a singleton for HttpClient using the platform-specific implementation
     single { createHttpClient() }
     // Declare a singleton for NewsApiService, injecting HttpClient
-    single { NewsApiService(get()) }
+    single<NewsSource> { NewsApiService(get()) }
     // Declare a singleton for NewsRepository, injecting NewsApiService
     single { NewsRepository(get(), get()) }
     // Declare a singleton for GetNewsUseCase, injecting NewsRepository
     single { GetNewsUseCase(get()) }
     // Declare a factory for NewsViewModel, injecting GetNewsUseCase
     factory { NewsViewModel(get()) }
+
 }

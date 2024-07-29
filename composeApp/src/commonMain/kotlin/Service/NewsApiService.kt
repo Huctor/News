@@ -12,7 +12,7 @@ import io.ktor.http.HttpStatusCode
  *
  * @param client The HTTP client used to make requests to the news API.
  */
-class NewsApiService(private val client: HttpClient) {
+class NewsApiService(private val client: HttpClient):NewsSource {
 
     /**
      * Fetches the top headlines from the news API using the provided API key.
@@ -21,7 +21,7 @@ class NewsApiService(private val client: HttpClient) {
      * @return A NewsResponse object containing the fetched news data.
      * @throws Exception If there is an error while fetching the news or if the response status is not OK.
      */
-    suspend fun fetchNews(apiKey: String): NewsResponse {
+    override suspend fun fetchNews(apiKey: String): NewsResponse {
 
         try {
             // Make a GET request to the news API endpoint
@@ -40,4 +40,13 @@ class NewsApiService(private val client: HttpClient) {
             throw Exception("Failed to fetch news: ${e.message}")
         }
     }
+}
+
+val newsModule: Module = module {
+    single { HttpClient() }
+    single<NewsSource> { NewsApiService(get()) }
+    // 如果需要使用不同的新闻源，只需更改这里的实现
+    single<NewsSource> { AnotherNewsApiService(get()) }
+    single { NewsRepository(get()) }
+    viewModel { NewsViewModel(get()) }
 }

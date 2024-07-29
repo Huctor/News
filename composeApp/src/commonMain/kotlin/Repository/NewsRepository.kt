@@ -3,13 +3,14 @@ package Repository
 import CacheManager.CacheManager
 import Model.NewsResponse
 import Service.NewsApiService
+import Service.NewsSource
 
 /**
  * NewsRepository is responsible for fetching news from the API.
  *
  * @param apiService The service used to make API calls to fetch news.
  */
-class NewsRepository(private val apiService: NewsApiService, private val cacheManager: CacheManager) {
+class NewsRepository(private val newsSource: NewsSource, private val cacheManager: CacheManager) {
     /**
      * Fetches news from the API using the provided API key.
      *
@@ -19,7 +20,7 @@ class NewsRepository(private val apiService: NewsApiService, private val cacheMa
     suspend fun getNews(apiKey: String): NewsResponse {
         return try {
             // Fetch news from the API
-            val newsResponse = apiService.fetchNews(apiKey)
+            val newsResponse = newsSource.fetchNews(apiKey)
             // Cache the news response
             cacheManager.cacheNews(newsResponse)
             return newsResponse

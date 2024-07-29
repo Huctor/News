@@ -21,7 +21,7 @@ class NewsViewModelWrapper: ObservableObject {
     init() {
         cacheManager = IosCacheManager()
         // Create instances of necessary classes for fetching news
-        let getNewsUseCase = GetNewsUseCase(newsRepository: NewsRepository(apiService: NewsApiService(client: Modules_ios_ktKt.createHttpClient()),cacheManager: cacheManager))
+        let getNewsUseCase = GetNewsUseCase(newsRepository: NewsRepository(newsSource: NewsApiService(client: Modules_ios_ktKt.createHttpClient()),cacheManager: cacheManager))
         viewModel = NewsViewModel(getNewsUseCase: getNewsUseCase)
         collectNews()
     }
