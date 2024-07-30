@@ -16,4 +16,7 @@ https://medium.com/@huctor/kotlin-multiplatform-how-to-apply-solid-principles-in
 Kotlin Multiplatform: How to apply SOLID principles in development-Liskov Substitution Principle
 https://medium.com/@huctor/kotlin-multiplatform-how-to-apply-solid-principles-in-development-liskov-substitution-principle-a91097accee2
 
+Kotlin Multiplatform: How to apply SOLID principles in development-Interface Segregation Principle
+https://medium.com/@huctor/kotlin-multiplatform-how-to-apply-solid-principles-in-development-interface-segregation-principle-0f2fbcfcc375
+
 
