@@ -19,4 +19,6 @@ https://medium.com/@huctor/kotlin-multiplatform-how-to-apply-solid-principles-in
 Kotlin Multiplatform: How to apply SOLID principles in development-Interface Segregation Principle
 https://medium.com/@huctor/kotlin-multiplatform-how-to-apply-solid-principles-in-development-interface-segregation-principle-0f2fbcfcc375
 
+Kotlin Multiplatform: How to apply SOLID principles in development-Dependency Inversion Principle
+https://medium.com/@huctor/kotlin-multiplatform-how-to-apply-solid-principles-in-development-dependency-inversion-principle-2a4e9fc0ef22
 
