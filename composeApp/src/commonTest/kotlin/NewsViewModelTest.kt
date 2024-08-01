@@ -70,7 +70,7 @@ class NewsViewModelTest : KoinTest {
     @Test
     fun testFetchNewsResetsStateWhenAPICallFails() = runTest {
         // Arrange
-        val apiKey = "a1c85049f3da44398a248fd5c45756a4"
+        val apiKey = ""
         (get<NewsSource>() as FakeNewsSource).setShouldReturnError(true)
 
         // Act
