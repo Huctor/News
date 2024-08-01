@@ -6,6 +6,7 @@ Kotlin Multiplatform: Building Cross-Platform App for iOS and Android Using the 
 https://medium.com/@huctor/kotlin-multiplatform-building-cross-platform-app-for-ios-and-android-using-the-mvvm-architecture-8fdd0f26a832
 
 [Unit Tests with Mocks]
+
 https://medium.com/@huctor/kotlin-multiplatform-unit-tests-with-mocks-9f8f3229e6d7
 
 [SOLID Principles]
