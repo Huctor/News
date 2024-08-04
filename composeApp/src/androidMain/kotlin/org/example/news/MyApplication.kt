@@ -19,7 +19,7 @@ class MyApplication: Application() {
         super.onCreate()
         initKoin {
             androidContext(this@MyApplication)
-            modules(commonModule(), androidModule)
+            modules(commonModule(), androidModule(this@MyApplication))
         }
     }
 }

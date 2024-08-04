@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.sqldelightPlugin)
 }
 
 kotlin {
@@ -39,10 +40,14 @@ kotlin {
             implementation(libs.koin.androidx.compose)
 
             implementation(libs.ktor.client.okhttp)
+
+            implementation(libs.sqldelight.android)
         }
 
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+
+            implementation(libs.sqldelight.native)
         }
 
         commonMain.dependencies {
@@ -65,12 +70,22 @@ kotlin {
             implementation(libs.bundles.ktor)
 
             implementation(libs.kotlinx.coroutines.core)
+
+            implementation(libs.sqldelight.coroutines)
         }
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
             implementation(libs.koinTest)
             implementation(libs.kotlinx.coroutines.test)
+        }
+    }
+
+    targets.configureEach {
+        compilations.configureEach {
+            compilerOptions.configure {
+                freeCompilerArgs.add("-Xexpect-actual-classes")
+            }
         }
     }
 
@@ -111,6 +126,14 @@ android {
     }
     dependencies {
         debugImplementation(compose.uiTooling)
+    }
+}
+
+sqldelight {
+    databases {
+        create("NewsDatabase") {
+            packageName = "com.newsapp.database"
+        }
     }
 }
 

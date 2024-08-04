@@ -1,10 +1,15 @@
 package DI
 
+import CacheManager.CacheManager
+import CacheManager.SqlDelightCacheManager
+import DB.DatabaseDriverFactory
 import Repository.NewsRepository
 import Service.NewsApiService
 import Service.NewsSource
 import Usecase.GetNewsUseCase
 import ViewModel.NewsViewModel
+import app.cash.sqldelight.db.SqlDriver
+import com.newsapp.database.NewsDatabase
 import io.ktor.client.HttpClient
 import org.koin.dsl.module
 
@@ -38,5 +43,17 @@ fun commonModule() = module {
     single { GetNewsUseCase(get()) }
     // Declare a factory for NewsViewModel, injecting GetNewsUseCase
     factory { NewsViewModel(get()) }
+
+    // Provide MyDatabase
+    single {
+        NewsDatabase(get())
+    }
+    // Provide CacheManager
+    single<CacheManager> {
+        SqlDelightCacheManager(get())
+    }
+
+    // Provide SqlDriver using DatabaseDriverFactory
+    single<SqlDriver> { get<DatabaseDriverFactory>().create() }
 
 }

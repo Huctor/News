@@ -18,6 +18,7 @@ import platform.Foundation.writeToFile
 /**
  * IosCacheManager is an implementation of CacheManager for iOS.
  */
+@OptIn(kotlinx.cinterop.BetaInteropApi::class)
 class IosCacheManager : CacheManager {
 
     private val cacheFileName = "news_cache.json"

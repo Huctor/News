@@ -2,6 +2,12 @@ package DI
 
 import AndroidCacheManager.AndroidCacheManager
 import CacheManager.CacheManager
+import CacheManager.SqlDelightCacheManager
+import DB.DatabaseDriverFactory
+import android.content.Context
+import app.cash.sqldelight.db.SqlDriver
+import app.cash.sqldelight.driver.android.AndroidSqliteDriver
+import com.newsapp.database.NewsDatabase
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -39,6 +45,24 @@ actual fun createHttpClient(): HttpClient {
 /**
  * Android-specific Koin module to provide the AndroidCacheManager implementation.
  */
-val androidModule = module {
+/* val androidModule = module {
     single<CacheManager> { AndroidCacheManager(get()) }
+    single<SqlDriver> {
+        AndroidSqliteDriver(NewsDatabase.Schema, get(), "NewsDatabase.db")
+    }
+}*/
+
+fun androidModule(context: Context) = module {
+    // single<CacheManager> { AndroidCacheManager(get()) }
+
+    // Provide the Android-specific DatabaseDriverFactory
+    single { DatabaseDriverFactory(context) }
+
+    single<SqlDriver> {
+        get<DatabaseDriverFactory>().create()
+    }
+
+    single<CacheManager> {
+        SqlDelightCacheManager(get())
+    }
 }

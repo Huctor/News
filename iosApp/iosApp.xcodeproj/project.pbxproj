@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		037469832C5F77FE005AF46A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 037469822C5F77FE005AF46A /* libsqlite3.tbd */; };
 		03AFF5E92C527C36009EA68B /* NewsViewModelWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFF5E82C527C36009EA68B /* NewsViewModelWrapper.swift */; };
 		03AFF5EB2C528957009EA68B /* ComposeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AFF5EA2C528957009EA68B /* ComposeApp.framework */; };
 		03AFF5ED2C550EDB009EA68B /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFF5EC2C550EDB009EA68B /* NewsItem.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		037469822C5F77FE005AF46A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		03AFF5E82C527C36009EA68B /* NewsViewModelWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewModelWrapper.swift; sourceTree = "<group>"; };
 		03AFF5EA2C528957009EA68B /* ComposeApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ComposeApp.framework; path = "../build/ios/Debug-iphonesimulator/ComposeApp.framework"; sourceTree = "<group>"; };
 		03AFF5EC2C550EDB009EA68B /* NewsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
@@ -34,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				037469832C5F77FE005AF46A /* libsqlite3.tbd in Frameworks */,
 				03AFF5EB2C528957009EA68B /* ComposeApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,6 +55,7 @@
 		42799AB246E5F90AF97AA0EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				037469822C5F77FE005AF46A /* libsqlite3.tbd */,
 				03AFF5EA2C528957009EA68B /* ComposeApp.framework */,
 			);
 			name = Frameworks;

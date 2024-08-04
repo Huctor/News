@@ -1,7 +1,12 @@
 package DI
 
 import CacheManager.CacheManager
+import CacheManager.SqlDelightCacheManager
+import DB.DatabaseDriverFactory
 import IosCacheManager.IosCacheManager
+import app.cash.sqldelight.db.SqlDriver
+import app.cash.sqldelight.driver.native.NativeSqliteDriver
+import com.newsapp.database.NewsDatabase
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.darwin.Darwin
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -41,5 +46,15 @@ actual fun createHttpClient(): HttpClient {
  * iOS-specific Koin module to provide the IosCacheManager implementation.
  */
 val iosModule = module {
-    single<CacheManager> { IosCacheManager() }
+    // single<CacheManager> { IosCacheManager() }
+
+    single { DatabaseDriverFactory() }
+
+    single<SqlDriver> {
+        get<DatabaseDriverFactory>().create()
+    }
+
+    single<CacheManager> {
+        SqlDelightCacheManager(get())
+    }
 }
