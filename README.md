@@ -9,6 +9,10 @@ https://medium.com/@huctor/kotlin-multiplatform-building-cross-platform-app-for-
 
 https://medium.com/@huctor/kotlin-multiplatform-unit-tests-with-mocks-9f8f3229e6d7
 
+[Database - SQLDelight]
+
+https://medium.com/@huctor/kotlin-multiplatform-sqldelight-a-detailed-and-complete-guide-fde9fe76b8f0
+
 [SOLID Principles]
 
 Kotlin Multiplatform: How to apply SOLID principles in development-Single Responsibility
